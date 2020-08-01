@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import  firebaseConfig from './firebase-config';
+import{
+  FirebaseAppProvider
+  
+}from 'reactfire'; // importamos libreria
 
-ReactDOM.render(
-  <React.StrictMode>
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'; // Archivo CSS de Bootstrap 4 
+import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
+
+ReactDOM.render((
+ 
+    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+    <Suspense fallback={'Conect App ...:)'} >
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    </Suspense>
+    </FirebaseAppProvider>
+
+),
+   document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
